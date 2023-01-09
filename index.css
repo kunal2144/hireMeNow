@@ -1,0 +1,50 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(rgb(89, 52, 223), rgb(41, 50, 182));
+}
+
+#input-resume, #output-resume{
+    resize: none;
+    height: 80vh;
+    width: 42vw;
+    background-color: rgb(195, 182, 243);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px black;
+    font-size: 25px;
+    padding: 20px;
+    color: rgb(34, 34, 34);
+}
+
+#input-resume:focus, #output-resume:focus {
+    outline: none;
+}
+
+#main {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+button {
+    display: block;
+    height: 6vh;
+    border: none;
+    box-shadow: 0px 0px 5px black;
+    background-color: rgb(195, 182, 243);
+    border-radius: 8px;
+    font-size: 40px;
+    padding: 5px 10px;
+    color: rgb(34, 34, 34);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0px 0px 15px black;
+}
