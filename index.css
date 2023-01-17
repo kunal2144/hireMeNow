@@ -33,7 +33,7 @@ body {
 
 button {
     display: block;
-    height: 6vh;
+    height: 50px;
     border: none;
     box-shadow: 0px 0px 5px black;
     background-color: rgb(195, 182, 243);

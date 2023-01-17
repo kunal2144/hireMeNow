@@ -9,18 +9,17 @@ xhr.withCredentials = true
 xhr.addEventListener("readystatechange", function() {
     if(this.readyState === 4) {
         let data = JSON.parse(this.response)
-        outputResumeEl.value = data.message
+        outputResumeEl.value = JSON.stringify(data["json-resume"], null, 2)
     }
-  });
+});
 
 async function convert() {
     const input = inputResumeEl.value
 
-    xhr.open("GET", API);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    console.log(JSON.stringify({"resume": input}))
-    xhr.send({
-        "resume": input
-    }) ;
+    if(!input) return alert("Please enter a resume!")
+
+    xhr.open("POST", API);
+    xhr.setRequestHeader("Content-Type", "text/plain")
+    xhr.send(input);
 }
 
