@@ -1,0 +1,133 @@
+body {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #E4FFE9;
+    margin: 0;
+}
+
+/* header */
+
+nav {   
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60px;
+    padding: 0.5em 1.0em;
+    background-color: #87D68D;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+nav h1 {
+    font-size: 2rem;
+    margin: 0px;
+    letter-spacing: 0.1em;
+    color: #1B1B1B;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1B1B1B;
+}
+
+nav input {
+    min-width: 300px;
+    width: 30%;
+    border-radius: 1em;
+    border: none;
+    padding: 0.3em;
+    text-indent: 0.5em;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #1B1B1B;
+    transition: background-color 0.3s;
+}
+
+nav input:focus {
+    outline: none;
+}
+
+.switch {
+    display: inline;    
+    padding: 0.3em 1em;
+    border-radius: 1em;
+    border: 1px solid #87D68D;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+    font-family: 'Roboto', sans-serif;
+    color: #1B1B1B;
+    background-color: #E4FFE9;
+}
+
+.switch:hover {
+    background-color: white;
+}
+
+.switch:active {
+    border-color: black;
+}
+
+/* footer */
+
+footer {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    background-color: #87D68D;
+    height: 50px;
+}
+
+/* content */
+
+.feed {
+    padding: 1em 1em;
+    margin-top: 60px;
+    text-align: center;
+}
+
+/* media queries */
+
+@media screen and (min-width: 769px) {
+    footer {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-bottom: 60px;
+    }
+    nav {
+        flex-direction: column;
+        justify-content: start;
+        height: 60px;
+    }
+    nav h1 {
+        font-size: 1.5rem;
+    }
+    nav input {
+        width: 100%;
+        border: 1px solid black;
+        margin-top: 0.4em;
+    }
+    nav .switch {
+        display: none;
+    }
+    footer .switch {
+        display: fixed;
+        background-color: white;
+        position: relative;
+        top: calc(100% - 50px);
+    }
+    footer .switch:active {
+        border: none;
+    }
+}
