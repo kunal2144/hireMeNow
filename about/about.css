@@ -1,0 +1,113 @@
+
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #E4FFE9;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 1em;
+    background-color: #87D68D;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#home {
+    padding: 0.5em 1em;
+    background-color: #E4FFE9;
+    text-decoration: none;
+    color: #1B1B1B;
+    font-size: 1.25rem;
+    font-weight: bold;
+    border-radius: 0.5em;
+}
+
+header h1 {
+    font-size: 2rem;
+    text-align: left;
+    font-weight: bold;
+    margin: 0px;
+    color: #1B1B1B;
+}
+
+#HireMeNow {
+    letter-spacing: 0.1em;
+}
+
+#devs {
+    display: flex;
+    margin: 3em 0;
+    justify-content: center;
+}
+
+#images {
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dev {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.dev h2 {
+    font-weight: bold;
+}
+
+img {
+    width: 15%;
+    min-width: 200px;
+    margin: 0;
+    margin-bottom: 1em; 
+}
+
+#companies {
+    padding: 1em;
+}
+
+#companies h1 {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+table {
+    box-shadow: 0px 0px 3px 2px green;
+}
+
+#title-break {
+    display: none;
+}
+
+
+th, td {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+}
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    #title-break {
+        display: block;
+    }
+    #companies h1 {
+        font-size: 2rem;
+    }
+    #images {
+        flex-direction: column;
+        align-items: center;
+        gap: 3em;
+    }
+}
