@@ -1,6 +1,6 @@
-
 html {
-    font-size: 16px;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -9,8 +9,15 @@ body {
 }
 
 header {
+    position: fixed;
+    top: 0;
+    box-sizing: border-box;
+    box-shadow: 2px 0px 6px 2px #87D68D;
+    width: 100%;
+    height: 70px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 14em;
     align-items: center;
     margin: 0;
     padding: 1em;
@@ -19,12 +26,16 @@ header {
     text-align: center;
 }
 
+.first-section {
+    margin-top: calc(80px + 1em);
+}
+
 #home {
-    padding: 0.5em 1em;
+    padding: 0.3em 0.5em;
     background-color: #E4FFE9;
     text-decoration: none;
     color: #1B1B1B;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: bold;
     border-radius: 0.5em;
 }
@@ -33,7 +44,7 @@ header h1 {
     font-size: 2rem;
     text-align: left;
     font-weight: bold;
-    margin: 0px;
+    margin: 0;
     color: #1B1B1B;
 }
 
@@ -42,21 +53,41 @@ header h1 {
 }
 
 #devs {
+    width: 100%;
     display: flex;
     margin: 3em 0;
     justify-content: center;
 }
 
+img {
+    border-radius:50%;
+    animation: 3s infinite glow ease-in-out;
+}
+
+@keyframes glow {
+    0%, 100%{
+        box-shadow: none;
+    }
+    50% {
+        box-shadow: 0 0 10px 6px #87D68D;
+    }
+}
+
+a, area {
+    outline: none;
+}
+
 #images {
-    width: 70%;
+    width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
 .dev {
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
+    width: 50%;
     text-align: center;
 }
 
@@ -71,11 +102,17 @@ img {
     margin-bottom: 1em; 
 }
 
-#companies {
+#companies, #testimonials {
     padding: 1em;
 }
 
-#companies h1 {
+#terms:visited {
+    color: purple;
+}
+
+#companies h2, #testimonials h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -89,25 +126,108 @@ table {
     display: none;
 }
 
+table th {
+    width: 33%;
+}
 
 th, td {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     font-size: 1.25rem;
 }
-@media screen and (max-width: 768px) {
+
+.last-section {
+    margin-bottom: calc(50px + 1.5em);
+}
+
+footer {
+    background-color: #87D68D;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+    color: #1B1B1B;
+    box-shadow: -2px 0px 6px 2px #87D68D;
+}
+
+footer h4 {
+    text-align: center;
+    margin: 0;
+}
+
+video {
+    margin-bottom: 5em;
+    border-radius: 1em;
+    box-shadow: 0px 0px 6px 2px green;
+}
+
+@media (min-width: 769px) {
+    main {
+        width: 750px;
+        background-color: #E4FFE9;
+        margin: auto;
+    }
+}
+@media (min-width: 401px) and (max-width: 768px) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
     #title-break {
         display: block;
     }
-    #companies h1 {
+    #companies h2 {
         font-size: 2rem;
     }
     #images {
         flex-direction: column;
         align-items: center;
         gap: 3em;
+    }
+    header {
+        gap: 0;
+        justify-content: space-between;
+    }
+    .first-section {
+        margin-top: calc(80px + 1em);
+    }
+    .last-section {
+        margin-bottom: calc(80px + 1.5em);
+    }
+}
+@media (max-width: 400px) {
+    html {
+        font-size: 10px;
+    }
+    header {
+        gap: 0em;
+        justify-content: space-between;
+    }
+    #title-break {
+        display: block;
+    }
+    #companies h2 {
+        font-size: 1.5rem;
+    }
+    #images {
+        flex-direction: column;
+        align-items: center;
+        gap: 3em;
+    }
+    .dev {
+        width: 100%;
+    }
+    .first-section {
+        margin-top: calc(80px + 1em);
+    }
+    .last-section {
+        margin-bottom: calc(80px + 1.5em);
     }
 }

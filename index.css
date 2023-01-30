@@ -1,5 +1,4 @@
 body {
-    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     background-color: #E4FFE9;
     margin: 0;
@@ -9,6 +8,7 @@ nav {
     position: fixed;
     top: 0;
     box-sizing: border-box;
+    box-shadow: 2px 0px 6px 2px #87D68D;
     width: 100%;
     height: 70px;
     padding: 0.5em 1.0em;
@@ -33,20 +33,29 @@ nav h1 {
 }
 
 nav > ul {
-    display: flex;
-    justify-content: center;
-    gap: 5em;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
+.buttons {
+    display: flex;
+    list-style: none;
+    justify-content: end;
+    gap: 1em;
+}
+
 li h1, h2 {
     margin: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 a {
+    outline: none;
     text-decoration: none;
     color: #1B1B1B;
 }
@@ -59,13 +68,31 @@ a {
     border: 2px solid #1B1B1B;
     padding: 2em 1em;
     border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .introduction h1 {
-    text-align: center;
+    overflow: hidden; 
+    border-right: .15em solid #87D68D; 
     font-size: 3rem;
+    letter-spacing: 0.1em;
     margin: 0;
     color: #1B1B1B;
+    animation: 
+        typing 2s steps(30, end),
+        blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #87D68D; }
 }
 
 .introduction p {
@@ -128,8 +155,8 @@ hr {
     background-color: black;
 }
 
-@media screen and (min-width: 769px) {
-    #main {
+@media (min-width: 769px) {
+    main {
         width: 750px;
         background-color: #E4FFE9;
         margin: auto;
@@ -162,7 +189,7 @@ hr {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (min-width: 401px) and (max-width: 768px) {
     body {
         font-size: 12px;
     }
@@ -185,5 +212,33 @@ hr {
     }
     section:last-of-type > h1 {
         font-size: 2rem;
+    }
+    
+}
+
+@media (max-width: 400px) {
+    body {
+        font-size: 10px;
+    }
+    nav h1 {
+        font-size: 1.25rem;
+    }
+    .introduction h1 {
+        font-size: 1.5rem;
+    }
+    nav > ul {
+        gap: 0;
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+    }
+    .margin-left {
+        margin-left: 0;
+    }
+    .margin-right {
+        margin-right: 0;
+    }
+    section:last-of-type > h1 {
+        font-size: 1.5rem;
     }
 }
