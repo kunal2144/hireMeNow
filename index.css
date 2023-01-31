@@ -13,9 +13,9 @@ nav {
     height: 70px;
     padding: 0.5em 1.0em;
     background-color: #87D68D;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 nav div {
