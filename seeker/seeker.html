@@ -7,8 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Seeker | HireMeNow</title>
         <link rel="stylesheet" href="seeker.css">
+        <script src="./seeker.js"></script>
     </head>
-    <body>
+    <body onload="getJobListings()">
         <header>
             <nav>
                 <h1><a href="../index.html">HireMeNow</a></h1>
@@ -16,11 +17,12 @@
                 <button class="switch">Switch to Recruiting</button>
             </nav>
         </header>
-        <div class="feed">
+        <div id="feed">
+
         </div>
         <footer>
             <button class="switch">Recruit</button>
         </footer>
-        <script src="seeker.js" async defer></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
