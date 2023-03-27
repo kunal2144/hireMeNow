@@ -6,6 +6,9 @@ async function getJobListings() {
 
     let jobListingElements = jobListings.map((job) => {
         let jobListing = document.createElement("div")
+        jobListing.onclick = () => {
+            window.open(`http://127.0.0.1:3000/job_listing/${job.id}`, "_blank")
+        }
         jobListing.classList.add("job-listing")
         jobListing.innerHTML = `
             <h1>${job.title}</h1>
@@ -15,7 +18,7 @@ async function getJobListings() {
             <h4>Qualifications: </h4>
             <p>${job.qualifications.replaceAll(";", "</br>").toString()}</p>
             <h4 style=" color: ${job.status == "Open" ? "green" : "red"};">
-                ${job.status == "Open" ? "Active" : "Closed"}
+                ${job.status}
             </h4>
         `
         return jobListing
@@ -25,3 +28,18 @@ async function getJobListings() {
         feed.appendChild(jobListingElement)
     })
 }
+
+// window.onscroll = function () {
+//     filterSticky()
+// }
+
+// let filters = document.getElementById("filters")
+// let sticky = filters.offsetTop
+
+// function filterSticky() {
+//     if (window.pageYOffset > sticky) {
+//         header.classList.add("sticky")
+//     } else {
+//         header.classList.remove("sticky")
+//     }
+// }
