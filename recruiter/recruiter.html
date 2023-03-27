@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recruiter | HireMeNow</title>
+        <link rel="stylesheet" href="recruiter.css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <h1><a href="../index.html">HireMeNow</a></h1>
+                <input type="text" placeholder="Search for job seekers" />
+                <button
+                    class="switch"
+                    onclick="window.location.href = '../seeker/seeker.html'"
+                >
+                    Switch to Seeking
+                </button>
+            </nav>
+        </header>
+        <div id="feed"></div>
+        <footer>
+            <button
+                class="switch"
+                onclick="window.location.href = '../seeker/seeker.html'"
+            >
+                Seek
+            </button>
+        </footer>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </body>
+</html>

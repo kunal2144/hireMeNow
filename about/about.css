@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-color: #E4FFE9;
+    background-color: #e4ffe9;
     margin: 0;
 }
 
@@ -13,7 +13,7 @@ header {
     top: 0;
     z-index: 3;
     box-sizing: border-box;
-    box-shadow: 2px 0px 6px 2px #87D68D;
+    box-shadow: 2px 0px 6px 2px #87d68d;
     width: 100%;
     height: 70px;
     display: flex;
@@ -22,8 +22,8 @@ header {
     align-items: center;
     margin: 0;
     padding: 1em;
-    background-color: #87D68D;
-    font-family: 'Roboto', sans-serif;
+    background-color: #87d68d;
+    font-family: "Roboto", sans-serif;
     text-align: center;
 }
 
@@ -33,9 +33,9 @@ header {
 
 #home {
     padding: 0.3em 0.5em;
-    background-color: #E4FFE9;
+    background-color: #e4ffe9;
     text-decoration: none;
-    color: #1B1B1B;
+    color: #1b1b1b;
     font-size: 1.5rem;
     font-weight: bold;
     border-radius: 0.5em;
@@ -46,7 +46,7 @@ header h1 {
     text-align: left;
     font-weight: bold;
     margin: 0;
-    color: #1B1B1B;
+    color: #1b1b1b;
 }
 
 #HireMeNow {
@@ -61,20 +61,22 @@ header h1 {
 }
 
 img {
-    border-radius:50%;
+    border-radius: 50%;
     animation: 3s infinite glow ease-in-out;
 }
 
 @keyframes glow {
-    0%, 100%{
+    0%,
+    100% {
         box-shadow: none;
     }
     50% {
-        box-shadow: 0 0 10px 6px #87D68D;
+        box-shadow: 0 0 10px 6px #87d68d;
     }
 }
 
-a, area {
+a,
+area {
     outline: none;
 }
 
@@ -86,7 +88,7 @@ a, area {
 }
 
 .dev {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1.25rem;
     width: 50%;
     text-align: center;
@@ -100,10 +102,11 @@ img {
     width: 15%;
     min-width: 200px;
     margin: 0;
-    margin-bottom: 1em; 
+    margin-bottom: 1em;
 }
 
-#companies, #testimonials {
+#companies,
+#testimonials {
     padding: 1em;
 }
 
@@ -111,8 +114,9 @@ img {
     color: purple;
 }
 
-#companies h2, #testimonials h2 {
-    font-family: 'Roboto', sans-serif;
+#companies h2,
+#testimonials h2 {
+    font-family: "Roboto", sans-serif;
     font-weight: 600;
     text-align: center;
     margin-top: 1em;
@@ -131,9 +135,10 @@ table th {
     width: 33%;
 }
 
-th, td {
+th,
+td {
     text-align: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 1.25rem;
 }
 
@@ -142,7 +147,7 @@ th, td {
 }
 
 footer {
-    background-color: #87D68D;
+    background-color: #87d68d;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -150,11 +155,11 @@ footer {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center ;
-    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
     margin: 0;
-    color: #1B1B1B;
-    box-shadow: -2px 0px 6px 2px #87D68D;
+    color: #1b1b1b;
+    box-shadow: -2px 0px 6px 2px #87d68d;
 }
 
 footer h4 {
@@ -177,7 +182,7 @@ video:last-of-type {
 @media (min-width: 769px) {
     main {
         width: 750px;
-        background-color: #E4FFE9;
+        background-color: #e4ffe9;
         margin: auto;
     }
 }

@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Seeker | HireMeNow</title>
-        <link rel="stylesheet" href="seeker.css">
+        <link rel="stylesheet" href="seeker.css" />
         <script src="./seeker.js"></script>
     </head>
     <body onload="getJobListings()">
         <header>
             <nav>
                 <h1><a href="../index.html">HireMeNow</a></h1>
-                <input type="text" placeholder="Search for jobs listings"/>
-                <button class="switch">Switch to Recruiting</button>
+                <input type="text" placeholder="Search for job listings" />
+                <button
+                    class="switch"
+                    onclick="window.location.href = '../recruiter/recruiter.html'"
+                >
+                    Switch to Recruiting
+                </button>
             </nav>
         </header>
-        <div id="feed">
-
+        <div id="filter"></div>
+        <div id="content">
+            <div id="feed"></div>
         </div>
         <footer>
-            <button class="switch">Recruit</button>
+            <button
+                class="switch"
+                onclick="window.location.href = '../recruiter/recruiter.html'"
+            >
+                Recruit
+            </button>
         </footer>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
