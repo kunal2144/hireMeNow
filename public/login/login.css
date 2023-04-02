@@ -8,11 +8,10 @@
     justify-content: center;
     flex-direction: column;
     padding: 10px;
-    box-shadow: 0 4px 8px 0 #87D68D, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 #87D68D, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 #87D68D, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 #87d68d, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 #87d68d, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 #87d68d, 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
-
 }
 .brand_logo_container {
     position: absolute;
@@ -32,7 +31,7 @@
 }
 .login_btn {
     width: 100%;
-    background: #87D68D !important;
+    background: #87d68d !important;
     color: white !important;
 }
 .login_btn:focus {
@@ -53,6 +52,6 @@
     box-shadow: none !important;
     outline: 0px !important;
 }
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
     background-color: #c0392b !important;
 }

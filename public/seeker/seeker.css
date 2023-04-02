@@ -62,6 +62,7 @@ nav input:focus {
     font-family: "Roboto", sans-serif;
     color: #1b1b1b;
     background-color: #e4ffe9;
+    cursor: pointer;
 }
 
 .switch:hover {

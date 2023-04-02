@@ -3,6 +3,7 @@ import exphbs from "express-handlebars"
 import Express from "express"
 import dotenv from "dotenv"
 import handlebars from "handlebars"
+import router from "./router.js"
 
 handlebars.registerHelper("eq", function (value1, value2) {
     return value1 === value2
@@ -19,6 +20,9 @@ const supabase = createClient(
     "https://tsplplrxxpvdycvonvrv.supabase.co",
     process.env.SUPABASE_ANON
 )
+
+//routes
+app.use(router)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
