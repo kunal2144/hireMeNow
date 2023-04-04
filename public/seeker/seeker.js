@@ -1,13 +1,18 @@
+import config from "../config.js"
+
+const SERVER_URL = config.SERVER_URL
+
+document.addEventListener("DOMContentLoaded", getJobListings)
+
 async function getJobListings() {
-    let jobListings = (
-        await axios.get("http://192.168.0.189:3000/get_job_listings")
-    ).data
+    let jobListings = (await axios.get(`http://${SERVER_URL}/get_job_listings`))
+        .data
     let feed = document.getElementById("feed")
 
     let jobListingElements = jobListings.map((job) => {
         let jobListing = document.createElement("div")
         jobListing.onclick = () => {
-            window.open(`http://127.0.0.1:3000/job_listing/${job.id}`, "_blank")
+            window.open(`http://${SERVER_URL}/job_listing/${job.id}`, "_blank")
         }
         jobListing.classList.add("job-listing")
         jobListing.innerHTML = `

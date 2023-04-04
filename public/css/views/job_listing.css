@@ -1,0 +1,30 @@
+body {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e4ffe9;
+}
+* {
+    text-align: center;
+    font-family: Roboto, sans-serif;
+}
+#card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 35%;
+    min-height: 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.473);
+    background-color: white;
+}
+
+@media screen and (max-width: 600px) {
+    #card {
+        min-width: 80%;
+    }
+}

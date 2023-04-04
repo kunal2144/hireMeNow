@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>{{jobListing.title}} | Jobs</title>
+        <link rel="stylesheet" href="../css/views/job_listing.css" />
+    </head>
+    <body>
+        <div id="card">
+            <div id="content">
+                <h1>{{jobListing.title}}</h1>
+                <h3>{{jobListing.description}}</h3>
+                <h3>Location: {{jobListing.location}}</h3>
+                <hr />
+                <h4>Qualifications: </h4>
+                <p>{{{replaceAll jobListing.qualifications ";" "<br/>"}}}</p>
+            </div>
+        </div>
+    </body>
+</html>

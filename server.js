@@ -1,9 +1,10 @@
 import { createClient } from "@supabase/supabase-js"
-import exphbs from "express-handlebars"
+import hbs from "express-handlebars"
 import Express from "express"
 import dotenv from "dotenv"
 import handlebars from "handlebars"
 import router from "./router.js"
+import __dirname from "./__dirname.js"
 
 handlebars.registerHelper("eq", function (value1, value2) {
     return value1 === value2
@@ -33,8 +34,16 @@ app.use((req, res, next) => {
     next()
 })
 
-app.engine("handlebars", exphbs.engine())
-app.set("view engine", "handlebars")
+app.set("view engine", "hbs")
+app.engine(
+    "hbs",
+    hbs.engine({
+        extname: "hbs",
+        defaultView: "default",
+        layoutsDir: __dirname + "/views/layouts/",
+        partialsDir: __dirname + "/views/partials/",
+    })
+)
 
 app.get("/get_job_listings", async (req, res) => {
     let { data: job_listing, error } = await supabase
@@ -57,10 +66,10 @@ app.get("/job_listing/:id", async (req, res) => {
             message: "Failed to retrieve job listing",
         })
     } else if (jobListing.length === 0) {
-        res.status(404).render("notfound", { message: "Job listing not found" })
+        res.status(404).render("notfound", { title: "404 Error | Jobs" })
     } else {
         res.render("job_listing", {
-            title: jobListing[0].title,
+            title: jobListing[0].title.concat(" | Jobs"),
             jobListing: jobListing[0],
         })
     }
