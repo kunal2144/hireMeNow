@@ -18,7 +18,9 @@ async function getJobListings() {
         jobListing.innerHTML = `
             <h1>${job.title}</h1>
             <h3>${job.description}</h3>
-            <h3>${"Location: ".concat(job.location)}</h3>
+            <h3><img src="../../assets/images/location.png"/>${
+                job.location
+            }</h3>
             <hr>
             <h4>Qualifications: </h4>
             <p>${job.qualifications.replaceAll(";", "</br>").toString()}</p>
@@ -33,18 +35,3 @@ async function getJobListings() {
         feed.appendChild(jobListingElement)
     })
 }
-
-// window.onscroll = function () {
-//     filterSticky()
-// }
-
-// let filters = document.getElementById("filters")
-// let sticky = filters.offsetTop
-
-// function filterSticky() {
-//     if (window.pageYOffset > sticky) {
-//         header.classList.add("sticky")
-//     } else {
-//         header.classList.remove("sticky")
-//     }
-// }

@@ -1,18 +1,51 @@
 <html>
     <head>
         <title>{{jobListing.title}} | Jobs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="../css/views/job_listing.css" />
     </head>
     <body>
-        <div id="card">
-            <div id="content">
-                <h1>{{jobListing.title}}</h1>
-                <h3>{{jobListing.description}}</h3>
-                <h3>Location: {{jobListing.location}}</h3>
-                <hr />
-                <h4>Qualifications: </h4>
-                <p>{{{replaceAll jobListing.qualifications ";" "<br/>"}}}</p>
+        <header>
+            <nav>
+                <h1><a href="/">HireMeNow</a></h1>
+                <input type="text" placeholder="Search for job listings" />
+                <button
+                    class="switch"
+                    onclick="window.location.href = '/recruiter'"
+                >
+                    Switch to Recruiting
+                </button>
+            </nav>
+        </header>
+        <div id="content">
+            <div id="feed">
+                <h1>{{jobListing.title}}
+                    Job in
+                    {{jobListing.location}}
+                    at
+                    {{jobListing.company}}</h1>
+                <div id="desc">
+                    <h3>{{jobListing.description}}</h3>
+                    <h3><img
+                            src="../assets/images/location.png"
+                        />{{jobListing.location}}</h3>
+                    <hr />
+                    <h4>Qualifications: </h4>
+                    <p>{{{replaceAll
+                            jobListing.qualifications
+                            ";"
+                            "<br/>"
+                        }}}</p>
+                </div>
             </div>
         </div>
+        <footer>
+            <button
+                class="switch"
+                onclick="window.location.href = '/recruiter'"
+            >
+                Recruit
+            </button>
+        </footer>
     </body>
 </html>

@@ -60,7 +60,6 @@ app.get("/job_listing/:id", async (req, res) => {
         .from("job_listing")
         .select("*")
         .eq("id", req.params.id)
-
     if (error) {
         res.status(500).render("error", {
             message: "Failed to retrieve job listing",
