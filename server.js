@@ -67,6 +67,17 @@ app.get("/job_listing/:id", async (req, res) => {
     } else if (jobListing.length === 0) {
         res.status(404).render("notfound", { title: "404 Error | Jobs" })
     } else {
+        let sd = new Date(jobListing[0].start_date)
+        jobListing[0].start_date =
+            sd.getDate() + "/" + (sd.getMonth() + 1) + "/" + sd.getFullYear()
+
+        let ctc = jobListing[0].ctc
+        jobListing[0].ctc = ctc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+        let ab = new Date(jobListing[0].apply_by)
+        jobListing[0].apply_by =
+            ab.getDate() + "/" + (ab.getMonth() + 1) + "/" + ab.getFullYear()
+
         res.render("job_listing", {
             title: jobListing[0].title.concat(" | Jobs"),
             jobListing: jobListing[0],

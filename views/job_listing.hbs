@@ -25,14 +25,50 @@
                     at
                     {{jobListing.company}}</h1>
                 <div id="desc">
-                    <h3>{{jobListing.description}}</h3>
+                    <h3 style="margin-bottom: 0;">{{jobListing.title}}</h3>
+                    <h4
+                        style="margin-top: 0.5em; color: rgb(70, 70, 70);"
+                    >{{jobListing.company}}</h4>
                     <h3><img
                             src="../assets/images/location.png"
                         />{{jobListing.location}}</h3>
+                    <div id="details">
+                        <div class="row">
+                            <div class="col">
+                                <h4><img
+                                        src="../assets/images/date.png"
+                                        alt="start date.png"
+                                    />Start Date</h4>
+                                <h4>{{jobListing.start_date}}</h4>
+                            </div>
+                            <div class="col">
+                                <h4><img
+                                        src="../assets/images/money.png"
+                                        alt="money.png"
+                                    />CTC</h4>
+                                <h4>{{jobListing.ctc}} p.a</h4>
+                            </div>
+                            <div class="col">
+                                <h4><img
+                                        src="../assets/images/date.png"
+                                        alt="Apply by.png"
+                                    />Apply By</h4>
+                                <h4>{{jobListing.apply_by}}</h4>
+                            </div>
+                        </div>
+                    </div>
                     <hr />
-                    <h4>Qualifications: </h4>
+                    <h4>Job Description</h4>
+                    <p>{{{replaceAll jobListing.description ";" "<br/>"}}}</p>
+                    <h4>Qualifications</h4>
                     <p>{{{replaceAll
                             jobListing.qualifications
+                            ";"
+                            "<br/>"
+                        }}}</p>
+                    <h4>Application Instructions</h4>
+                    <p>{{{replaceAll
+                            jobListing.application_instructions
                             ";"
                             "<br/>"
                         }}}</p>

@@ -94,8 +94,29 @@ footer {
     text-align: center;
 }
 
+#details {
+    margin-top: 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 2em;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col h4:last-child {
+    margin-top: 0;
+}
+
 #feed {
-    min-width: 50%;
+    min-width: 60%;
     padding: 1em 1em;
     margin-top: 60px;
 }
@@ -104,7 +125,7 @@ footer {
     border-radius: 1em;
     text-align: left;
     background-color: white;
-    padding: 1em 1em;
+    padding: 1em;
 }
 
 img {
