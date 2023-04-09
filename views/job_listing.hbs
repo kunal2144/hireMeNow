@@ -46,7 +46,7 @@
                                         src="../assets/images/money.png"
                                         alt="money.png"
                                     />CTC</h4>
-                                <h4>{{jobListing.ctc}} p.a</h4>
+                                <h4>{{jobListing.ctc}}</h4>
                             </div>
                             <div class="col">
                                 <h4><img
@@ -58,20 +58,15 @@
                         </div>
                     </div>
                     <hr />
-                    <h4>Job Description</h4>
+                    <h4>About the Job</h4>
                     <p>{{{replaceAll jobListing.description ";" "<br/>"}}}</p>
-                    <h4>Qualifications</h4>
+                    <h4>Qualifications required</h4>
                     <p>{{{replaceAll
                             jobListing.qualifications
                             ";"
                             "<br/>"
                         }}}</p>
-                    <h4>Application Instructions</h4>
-                    <p>{{{replaceAll
-                            jobListing.application_instructions
-                            ";"
-                            "<br/>"
-                        }}}</p>
+                    <button class="apply-now">Apply Now</button>
                 </div>
             </div>
         </div>

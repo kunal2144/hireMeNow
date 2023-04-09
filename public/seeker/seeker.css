@@ -101,7 +101,14 @@ footer {
     margin-top: 60px;
 }
 
-#filter {
+#job-listings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#centered-filter {
+    display: flex;
+    justify-content: center;
     width: 25%;
     height: 80vh;
     position: fixed;
@@ -114,11 +121,34 @@ footer {
     box-shadow: 0px 0px 10px 0px #87d68d;
 }
 
+label {
+    display: block;
+    margin-bottom: 0.4em;
+    margin-top: 1.5em;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+#filter {
+    width: 60%;
+}
+
+select,
+input[type="date"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.3em;
+    font-size: 1.1rem;
+    font-family: "Roboto", sans-serif;
+    color: #1b1b1b;
+    transition: background-color 0.3s;
+    border: 1px solid black;
+}
+
 .job-listing {
     text-align: left;
     box-sizing: border-box;
-    width: 100%;
-    margin: 1em 0;
+    margin: 1em 1em;
     padding: 2em;
     border-radius: 1em;
     background-color: white;
@@ -129,19 +159,57 @@ img {
     margin-right: 0.5em;
 }
 
+#salary-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#filter-salary {
+    width: 70%;
+    margin: 0;
+}
+
+#details {
+    margin-top: 0;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 15%;
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.col h4:last-child {
+    margin-top: 0;
+}
+
 /* media queries */
 
 @media screen and (max-width: 1260px) {
     #content {
         justify-content: center;
     }
-    #filter {
+    #centered-filter {
         display: none;
+    }
+    #feed {
+        width: 100%;
     }
 }
 
 @media screen and (min-width: 769px) {
     footer {
+        display: none;
+    }
+    #toggle-navbar {
         display: none;
     }
 }
@@ -153,7 +221,14 @@ img {
     nav {
         flex-direction: column;
         justify-content: start;
+        align-items: center;
         height: 60px;
+    }
+    nav div {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
     }
     nav h1 {
         font-size: 1.5rem;
@@ -178,6 +253,16 @@ img {
     #feed {
         width: 100%;
         margin-top: 80px;
-        padding: 1em 1.5em;
+        padding: 0.5em 1em;
+    }
+    .job-listing {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    #job-listings {
+        grid-template-columns: 1fr;
+    }
+    .row {
+        gap: 8%;
     }
 }

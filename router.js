@@ -22,4 +22,8 @@ router.get("/recruiter", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "recruiter/recruiter.html"))
 })
 
+router.get("/signup", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "signup/signup.html"))
+})
+
 export default router

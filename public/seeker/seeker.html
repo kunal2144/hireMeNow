@@ -7,12 +7,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Seeker | HireMeNow</title>
         <link rel="stylesheet" href="seeker.css" />
+
         <script src="./seeker.js" type="module"></script>
     </head>
     <body>
         <header>
             <nav>
-                <h1><a href="/">HireMeNow</a></h1>
+                <div>
+                    <h1><a href="/">HireMeNow</a></h1>
+                    <img
+                        id="toggle-navbar"
+                        src="../assets/images/menu.png"
+                        alt="toggle navbar"
+                    />
+                </div>
                 <input type="text" placeholder="Search for job listings" />
                 <button
                     class="switch"
@@ -22,9 +30,59 @@
                 </button>
             </nav>
         </header>
-        <div id="filter"></div>
-        <div id="content">
-            <div id="feed"></div>
+        <div class="hero">
+            <div class="static-filter">
+                <div id="centered-filter">
+                    <div id="filter">
+                        <h2 style="text-align: center">
+                            <img
+                                src="../assets/images/filter.png"
+                                alt="filter.png"
+                            />Filters
+                        </h2>
+                        <label for="filter-categories">Category</label>
+                        <select name="Category" id="filter-categories">
+                            <option value="" disabled selected>
+                                Select your option
+                            </option>
+                        </select>
+                        <label for="filter-locations">Location</label>
+                        <select name="Location" id="filter-locations">
+                            <option value="" disabled selected>
+                                Select your option
+                            </option>
+                        </select>
+                        <label for="filter-salary"
+                            >Desired Minimum Montly Salary</label
+                        >
+                        <div id="salary-container">
+                            <input
+                                type="range"
+                                min="0"
+                                max="500000"
+                                step="10000"
+                                value="0"
+                                id="filter-salary"
+                                style="display: inline"
+                            />
+                            <p id="salary" style="display: inline">0</p>
+                        </div>
+                        <label for="filter-start-date"
+                            >Starting from (or after)</label
+                        >
+                        <input
+                            type="date"
+                            name="filter-start-date"
+                            id="filter-start-date"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div id="content">
+                <div id="feed">
+                    <div id="job-listings"></div>
+                </div>
+            </div>
         </div>
         <footer>
             <button

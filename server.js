@@ -51,6 +51,10 @@ app.get("/get_job_listings", async (req, res) => {
         .select("*")
         .order("id")
 
+    job_listing.forEach((job) => {
+        formatJobData(job)
+    })
+
     if (!error) return res.send(job_listing)
     else return res.json(error)
 })
@@ -67,23 +71,33 @@ app.get("/job_listing/:id", async (req, res) => {
     } else if (jobListing.length === 0) {
         res.status(404).render("notfound", { title: "404 Error | Jobs" })
     } else {
-        let sd = new Date(jobListing[0].start_date)
-        jobListing[0].start_date =
-            sd.getDate() + "/" + (sd.getMonth() + 1) + "/" + sd.getFullYear()
+        let job = formatJobData(jobListing[0])
 
-        let ctc = jobListing[0].ctc
-        jobListing[0].ctc = ctc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
-        let ab = new Date(jobListing[0].apply_by)
-        jobListing[0].apply_by =
-            ab.getDate() + "/" + (ab.getMonth() + 1) + "/" + ab.getFullYear()
+        job.description +=
+            ". Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe libero voluptatibus assumenda maiores aliquid placeat reiciendis, unde quod ullam vel commodi deleniti repellat? Nulla, placeat ut minus itaque omnis accusamus?" +
+            " Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe libero voluptatibus assumenda maiores aliquid placeat reiciendis, unde quod ullam vel commodi deleniti repellat? Nulla, placeat ut minus itaque omnis accusamus?"
 
         res.render("job_listing", {
-            title: jobListing[0].title.concat(" | Jobs"),
-            jobListing: jobListing[0],
+            title: job.title.concat(" | Jobs"),
+            jobListing: job,
         })
     }
 })
+
+function formatJobData(job) {
+    let sd = new Date(job.start_date)
+    job.start_date =
+        sd.getDate() + "/" + (sd.getMonth() + 1) + "/" + sd.getFullYear()
+
+    let ctc = job.ctc
+    job.ctc = ctc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    let ab = new Date(job.apply_by)
+    job.apply_by =
+        ab.getDate() + "/" + (ab.getMonth() + 1) + "/" + ab.getFullYear()
+
+    return job
+}
 
 app.listen(3000, () => {
     console.log("Server running on port 3000")
