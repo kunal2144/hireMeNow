@@ -7,9 +7,9 @@
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="dashboard.css">
+	<link rel="stylesheet" href="users.css">
 	<script src="script.js" defer></script>
-	<title>Admin - HireMeNow</title>
+	<title>Users - HireMeNow</title>
 </head>
 
 <body>
@@ -22,8 +22,8 @@
 			<span class="text">HireMeNow</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="./dashboard.html">
+			<li>
+				<a href="../dashboard/dashboard.html">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Dashboard</span>
 				</a>
@@ -34,9 +34,9 @@
 					<span class="text">Analytics</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="../users/users.html">
-					<i class='bx bx-user'></i>
+                    <i class='bx bx-user'></i>
 					<span class="text">Users</span>
 				</a>
 			</li>
@@ -93,10 +93,10 @@
 		<main>
 			<div class="head-title">
 				<div class="left">
-					<h1>Dashboard</h1>
+					<h1>Users</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Dashboard</a>
+							<a href="users.html">Users</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -110,67 +110,26 @@
 				</a>
 			</div>
 
-			<ul class="box-info">
-				<li>
-					<i class='bx bx-user-plus'></i>
-					<span class="text">
-						<h3>435</h3>
-						<p>Visitors</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bxs-group' ></i>
-					<span class="text">
-						<h3>2534</h3>
-						<p>Active</p>
-					</span>
-				</li>
-				<li>
-					<i class='bx bx-user'></i>
-					<span class="text">
-						<h3>2843</h3>
-						<p>Total Users</p>
-					</span>
-				</li>
-			</ul>
-
 
 			<div class="table-data">
 				<div class="order">
-					<div class="todo">
-						<div class="head">
-							<h3>Todos</h3>
-							<i class='bx bx-plus' ></i>
-							<i class='bx bx-filter' ></i>
-						</div>
-						<ul class="todo-list">
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-							<li class="not-completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-							<li class="completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-							<li class="not-completed">
-								<p>Todo List</p>
-								<i class='bx bx-dots-vertical-rounded' ></i>
-							</li>
-						</ul>
+					<div class="head">
+						<h3>Recent Users</h3>
+						<!-- <i class='bx bx-search' ></i> -->
+						<i class='bx bx-filter' ></i>
 					</div>
+					<table id="tab">
+						<tbody>
+							
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
 	<!-- CONTENT -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </body>
 </html>

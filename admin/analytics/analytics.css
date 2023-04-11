@@ -47,9 +47,6 @@ body {
 }
 
 
-
-
-
 /* SIDEBAR */
 #sidebar {
 	position: fixed;
@@ -160,9 +157,6 @@ body {
 /* SIDEBAR */
 
 
-
-
-
 /* CONTENT */
 #content {
 	position: relative;
@@ -174,8 +168,6 @@ body {
 	width: calc(100% - 60px);
 	left: 60px;
 }
-
-
 
 
 /* NAVBAR */
@@ -303,9 +295,6 @@ body {
 /* NAVBAR */
 
 
-
-
-
 /* MAIN */
 #content main {
 	width: 100%;
@@ -357,8 +346,6 @@ body {
 }
 
 
-
-
 #content main .box-info {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -402,9 +389,6 @@ body {
 #content main .box-info li .text p {
 	color: var(--dark);	
 }
-
-
-
 
 
 #content main .table-data {
@@ -486,46 +470,6 @@ body {
 }
 
 
-#content main .table-data .todo {
-	flex-grow: 1;
-	flex-basis: 300px;
-}
-#content main .table-data .todo .todo-list {
-	width: 100%;
-}
-#content main .table-data .todo .todo-list li {
-	width: 100%;
-	margin-bottom: 16px;
-	background: var(--grey);
-	border-radius: 10px;
-	padding: 14px 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-#content main .table-data .todo .todo-list li .bx {
-	cursor: pointer;
-}
-#content main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid var(--green);
-}
-#content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
-}
-#content main .table-data .todo .todo-list li:last-child {
-	margin-bottom: 0;
-}
-/* MAIN */
-/* CONTENT */
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 768px) {
 	#sidebar {
 		width: 200px;
@@ -540,8 +484,6 @@ body {
 		display: none;
 	}
 }
-
-
 
 
 
