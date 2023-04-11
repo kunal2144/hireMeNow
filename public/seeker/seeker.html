@@ -7,10 +7,52 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Seeker | HireMeNow</title>
         <link rel="stylesheet" href="seeker.css" />
-
         <script src="./seeker.js" type="module"></script>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css"
+        />
     </head>
     <body>
+        <template id="job-listing-placeholder">
+            <div
+                class="ph-item job-listing"
+                style="
+                    z-index: -1;
+                    border-radius: 1em;
+                    padding: 4.8em 1em;
+                    margin-bottom: 1em;
+                "
+            >
+                <div class="ph-col-12">
+                    <div class="ph-row">
+                        <div class="ph-col-4 big"></div>
+                        <div class="ph-col-8 empty big"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-8 big"></div>
+                        <div class="ph-col-4 empty big"></div>
+                        <div class="ph-col-6 big"></div>
+                        <div class="ph-col-6 empty big"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-8"></div>
+                        <div class="ph-col-4 empty"></div>
+                        <div class="ph-col-6"></div>
+                        <div class="ph-col-6 empty"></div>
+                        <div class="ph-col-12 empty"></div>
+                        <div class="ph-col-4"></div>
+                        <div class="ph-col-8 empty"></div>
+                        <div class="ph-col-2"></div>
+                        <div class="ph-col-10 empty"></div>
+                    </div>
+                </div>
+            </div>
+        </template>
         <header>
             <nav>
                 <div>

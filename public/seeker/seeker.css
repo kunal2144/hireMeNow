@@ -130,7 +130,7 @@ label {
 }
 
 #filter {
-    width: 60%;
+    width: 70%;
 }
 
 select,
@@ -146,6 +146,16 @@ input[type="date"] {
 }
 
 .job-listing {
+    text-align: left;
+    box-sizing: border-box;
+    margin: 1em 1em;
+    padding: 2em;
+    border-radius: 1em;
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px #87d68d;
+}
+
+#job-listing {
     text-align: left;
     box-sizing: border-box;
     margin: 1em 1em;
@@ -178,7 +188,7 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: start;
-    gap: 15%;
+    gap: 10%;
     width: 100%;
 }
 

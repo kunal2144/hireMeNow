@@ -3,6 +3,7 @@ import config from "../config.js"
 const SERVER_URL = config.SERVER_URL
 
 document.addEventListener("DOMContentLoaded", getJobListings)
+document.addEventListener("DOMContentLoaded", () => {})
 document.addEventListener("DOMContentLoaded", setFilterCatgories)
 document.addEventListener("DOMContentLoaded", setFilterLocations)
 
@@ -13,9 +14,17 @@ document.getElementById("filter-salary").oninput = () => {
 }
 
 async function getJobListings() {
+    let feed = document.getElementById("job-listings")
+
+    let jobListingPlaceholder = document.getElementById(
+        "job-listing-placeholder"
+    )
+    for (let i = 0; i < 10; i++) {
+        feed.appendChild(jobListingPlaceholder.content.cloneNode(true))
+    }
+
     let jobListings = (await axios.get(`http://${SERVER_URL}/get_job_listings`))
         .data
-    let feed = document.getElementById("job-listings")
 
     let jobListingElements = jobListings.map((job) => {
         let jobListing = document.createElement("div")
@@ -62,6 +71,7 @@ async function getJobListings() {
         return jobListing
     })
 
+    feed.innerHTML = ""
     jobListingElements.forEach((jobListingElement) => {
         feed.appendChild(jobListingElement)
     })
