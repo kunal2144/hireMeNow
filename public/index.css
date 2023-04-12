@@ -4,8 +4,8 @@ html {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #E4FFE9;
+    font-family: "Roboto", sans-serif;
+    background-color: #e4ffe9;
     margin: 0;
 }
 
@@ -13,18 +13,18 @@ nav {
     position: fixed;
     top: 0;
     box-sizing: border-box;
-    box-shadow: 2px 0px 6px 2px #87D68D;
+    box-shadow: 2px 0px 6px 2px #87d68d;
     width: 100%;
     height: 70px;
-    padding: 0.5em 1.0em;
-    background-color: #87D68D;
+    padding: 0.5em 1em;
+    background-color: #87d68d;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
 nav div {
-    background-color: #E4FFE9;
+    background-color: #e4ffe9;
     border-radius: 0.5em;
     padding: 0.3em 0.5em;
     margin: 0.5em 0;
@@ -34,7 +34,7 @@ nav h1 {
     font-size: 2rem;
     margin: 0px;
     letter-spacing: 0.1em;
-    color: #1B1B1B;
+    color: #1b1b1b;
 }
 
 nav > ul {
@@ -54,7 +54,8 @@ nav > ul {
     gap: 1em;
 }
 
-li h1, h2 {
+li h1,
+h2 {
     margin: 0;
     -webkit-tap-highlight-color: transparent;
 }
@@ -62,7 +63,7 @@ li h1, h2 {
 a {
     outline: none;
     text-decoration: none;
-    color: #1B1B1B;
+    color: #1b1b1b;
 }
 
 .first-section {
@@ -70,7 +71,7 @@ a {
 }
 
 .introduction {
-    border: 2px solid #1B1B1B;
+    border: 2px solid #1b1b1b;
     padding: 2em 1em;
     border-radius: 1em;
     display: flex;
@@ -79,25 +80,32 @@ a {
 }
 
 .introduction h1 {
-    overflow: hidden; 
-    border-right: .15em solid #87D68D; 
+    overflow: hidden;
+    border-right: 0.15em solid #87d68d;
     font-size: 3rem;
     letter-spacing: 0.1em;
     margin: 0;
-    color: #1B1B1B;
-    animation: 
-        typing 2s steps(30, end),
-        blink-caret .75s step-end infinite;
+    color: #1b1b1b;
+    animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
 }
 
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
 }
-  
+
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #87D68D; }
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #87d68d;
+    }
 }
 
 .introduction p {
@@ -119,7 +127,7 @@ section > div {
 }
 
 .content p {
-    font-size: 1.20rem;
+    font-size: 1.2rem;
 }
 
 .row-reverse {
@@ -165,7 +173,7 @@ hr {
 }
 
 footer {
-    background-color: #87D68D;
+    background-color: #87d68d;
     bottom: 0;
     left: 0;
     position: absolute;
@@ -174,19 +182,19 @@ footer {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center ;
+    justify-content: center;
     margin: 0;
-    color: #1B1B1B;
-    box-shadow: -2px 0px 6px 2px #87D68D;
+    color: #1b1b1b;
+    box-shadow: -2px 0px 6px 2px #87d68d;
 }
 
 footer h4 {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
     margin: 0;
-}   
+}
 
 #terms:link {
     color: #007bff;
@@ -203,7 +211,7 @@ footer h4 {
 @media (min-width: 769px) {
     main {
         width: 750px;
-        background-color: #E4FFE9;
+        background-color: #e4ffe9;
         margin: auto;
     }
     nav div {
@@ -224,10 +232,10 @@ footer h4 {
         justify-content: center;
         align-items: center;
         text-align: center;
-    }  
-    section > div > div > h2{
+    }
+    section > div > div > h2 {
         font-size: 2rem;
-    }  
+    }
     section div > img {
         max-width: 400px;
         width: 80%;
@@ -279,7 +287,7 @@ footer h4 {
     .introduction h1 {
         font-size: 2.4rem;
     }
-    .introduction p{
+    .introduction p {
         font-size: 1.5rem;
     }
     .content h2 {

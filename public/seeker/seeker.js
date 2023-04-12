@@ -6,11 +6,53 @@ document.addEventListener("DOMContentLoaded", getJobListings)
 document.addEventListener("DOMContentLoaded", () => {})
 document.addEventListener("DOMContentLoaded", setFilterCatgories)
 document.addEventListener("DOMContentLoaded", setFilterLocations)
+document.addEventListener("DOMContentLoaded", () => {
+    let today = new Date()
+    let dd = String(today.getDate()).padStart(2, "0")
+    let mm = String(today.getMonth() + 1).padStart(2, "0")
+    let yyyy = today.getFullYear()
+    today = yyyy + "-" + mm + "-" + dd
+    document.getElementById("filter-start-date").value = today
+})
 
 document.getElementById("filter-salary").oninput = () => {
     let salary = document.getElementById("filter-salary").value
     salary = salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     document.getElementById("salary").innerHTML = salary
+}
+
+document.getElementById("search").addEventListener("keyup", async () => {
+    let search = document.getElementById("search").value
+    let jobListings = document.getElementsByClassName("job-listing")
+    let feed = document.getElementById("job-listings")
+
+    let jobs = (
+        await axios.get(
+            `http://${SERVER_URL}/get_job_listings?search=${search}`
+        )
+    ).data
+
+    Array.from(jobListings).forEach((jobListing) => {
+        jobListing.style.display = "none"
+    })
+
+    jobs = jobs.forEach((job) => {
+        job = jobToHTML(job)
+        feed.appendChild(job)
+    })
+})
+
+document.getElementById("filter-categories").onchange = () => {
+    let category = document.getElementById("filter-categories").value
+    let jobListings = document.getElementsByClassName("job-listing")
+    jobListings.forEach((jobListing) => {
+        let title = jobListing.getElementsByTagName("h1")[0].innerHTML
+        if (title.toLowerCase().includes(category.toLowerCase())) {
+            jobListing.style.display = "block"
+        } else {
+            jobListing.style.display = "none"
+        }
+    })
 }
 
 async function getJobListings() {
@@ -26,13 +68,21 @@ async function getJobListings() {
     let jobListings = (await axios.get(`http://${SERVER_URL}/get_job_listings`))
         .data
 
-    let jobListingElements = jobListings.map((job) => {
-        let jobListing = document.createElement("div")
-        jobListing.onclick = () => {
-            window.open(`http://${SERVER_URL}/job_listing/${job.id}`, "_blank")
-        }
-        jobListing.classList.add("job-listing")
-        jobListing.innerHTML = `
+    feed.innerHTML = ""
+
+    jobListings.forEach((job) => {
+        job = jobToHTML(job)
+        feed.appendChild(job)
+    })
+}
+
+function jobToHTML(job) {
+    let jobListing = document.createElement("div")
+    jobListing.onclick = () => {
+        window.open(`http://${SERVER_URL}/job_listing/${job.id}`, "_blank")
+    }
+    jobListing.classList.add("job-listing")
+    jobListing.innerHTML = `
             <h1>${job.title}</h1>
             <h3>${job.description}</h3>
             <h3><img src="../../assets/images/location.png"/>${
@@ -68,13 +118,7 @@ async function getJobListings() {
                 ${job.status}
             </h4>
         `
-        return jobListing
-    })
-
-    feed.innerHTML = ""
-    jobListingElements.forEach((jobListingElement) => {
-        feed.appendChild(jobListingElement)
-    })
+    return jobListing
 }
 
 function setFilterCatgories() {

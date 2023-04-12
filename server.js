@@ -46,10 +46,32 @@ app.engine(
 )
 
 app.get("/get_job_listings", async (req, res) => {
-    let { data: job_listing, error } = await supabase
-        .from("job_listing")
-        .select("*")
-        .order("id")
+    let response = {}
+
+    if (req.query.search) {
+        response = await supabase
+            .from("job_listing")
+            .select("*")
+            .order("id")
+            .ilike("title", `%${req.query.search}%`)
+
+        if (response.data.length == 0) {
+            response = await supabase
+                .from("job_listing")
+                .select("*")
+                .order("id")
+                .ilike("description", `%${req.query.search}%`)
+        }
+    } else {
+        response = await supabase.from("job_listing").select("*").order("id")
+    }
+
+    const { data: job_listing, error } = response
+
+    if (job_listing.length == 0)
+        return res
+            .status(404)
+            .json({ Error: "Could not find any job listings" })
 
     job_listing.forEach((job) => {
         formatJobData(job)
