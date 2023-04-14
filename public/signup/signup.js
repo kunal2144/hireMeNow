@@ -72,5 +72,25 @@ function validate() {
 }
 
 function registerUser() {
-    window.open("/seeker", "_self")
+    const data = {
+        email: email.value,
+        password: password.value,
+        type: type.value,
+    }
+
+    fetch("/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }).then((res) => {
+        if (res.status == 200) {
+            window.location.href = `/${type.value}`
+        } else if (res.status == 409) {
+            alert("Email already exists")
+        } else {
+            alert("Something went wrong")
+        }
+    })
 }

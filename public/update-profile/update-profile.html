@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Update | Profile</title>
+        <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.usebootstrap.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        />
+    </head>
+    <style>
+        body {
+            margin-top: 20px;
+            background-color: #e4ffe9;
+        }
+    </style>
+    <script src="update-profile.js"></script>
+    <body>
+        <div class="container">
+            <div class="row flex-lg-nowrap">
+                <div class="col-12 col-lg-auto mb-3" style="width: 200px"></div>
+
+                <div class="col">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="e-profile">
+                                        <div class="tab-content pt-3">
+                                            <div class="tab-pane active">
+                                                <form
+                                                    class="form"
+                                                    novalidate=""
+                                                >
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Full
+                                                                            Name</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="text"
+                                                                            name="first-name"
+                                                                            placeholder="Who"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Second
+                                                                            Name</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="text"
+                                                                            name="second-name"
+                                                                            placeholder="are"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Last
+                                                                            Name</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="text"
+                                                                            name="last-name"
+                                                                            placeholder="you?"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Email</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="text"
+                                                                            name="email"
+                                                                            placeholder="user@example.com"
+                                                                            disabled
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col mb-3"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >About</label
+                                                                        >
+                                                                        <textarea
+                                                                            class="form-control"
+                                                                            rows="5"
+                                                                            name="about"
+                                                                            placeholder="Tell us something about you!"
+                                                                        ></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-12 col-sm-6 mb-3"
+                                                        >
+                                                            <div class="mb-2">
+                                                                <b
+                                                                    >Change
+                                                                    Password</b
+                                                                >
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Current
+                                                                            Password</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="password"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >New
+                                                                            Password</label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="password"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div
+                                                                    class="col"
+                                                                >
+                                                                    <div
+                                                                        class="form-group"
+                                                                    >
+                                                                        <label
+                                                                            >Confirm
+                                                                            <span
+                                                                                class="d-none d-xl-inline"
+                                                                                >Password</span
+                                                                            ></label
+                                                                        >
+                                                                        <input
+                                                                            class="form-control"
+                                                                            type="password"
+                                                                        />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div
+                                                            class="col d-flex justify-content-end"
+                                                        >
+                                                            <button
+                                                                class="btn btn-primary"
+                                                                type="submit"
+                                                            >
+                                                                Save Changes
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3 mb-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

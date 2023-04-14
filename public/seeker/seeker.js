@@ -22,51 +22,70 @@ document.getElementById("filter-salary").oninput = () => {
 }
 
 document.getElementById("search").addEventListener("keyup", async () => {
-    let search = document.getElementById("search").value
-    let jobListings = document.getElementsByClassName("job-listing")
-    let feed = document.getElementById("job-listings")
-
-    let jobs = (
-        await axios.get(
-            `http://${SERVER_URL}/get_job_listings?search=${search}`
-        )
-    ).data
-
-    Array.from(jobListings).forEach((jobListing) => {
-        jobListing.style.display = "none"
-    })
-
-    jobs = jobs.forEach((job) => {
-        job = jobToHTML(job)
-        feed.appendChild(job)
-    })
+    getJobListings()
 })
 
 document.getElementById("filter-categories").onchange = () => {
-    let category = document.getElementById("filter-categories").value
-    let jobListings = document.getElementsByClassName("job-listing")
-    jobListings.forEach((jobListing) => {
-        let title = jobListing.getElementsByTagName("h1")[0].innerHTML
-        if (title.toLowerCase().includes(category.toLowerCase())) {
-            jobListing.style.display = "block"
-        } else {
-            jobListing.style.display = "none"
-        }
-    })
+    getJobListings()
+}
+
+document.getElementById("filter-locations").onchange = () => {
+    getJobListings()
+}
+
+document.getElementById("filter-salary").onchange = () => {
+    getJobListings()
+}
+
+document.getElementById("filter-start-date").onchange = () => {
+    getJobListings()
+}
+
+document.getElementById("toggle-navbar").onclick = () => {
+    document.getElementById("mySidebar").style.width = "250px"
+}
+
+document.getElementById("toggle-navbar-xl").onclick = () => {
+    document.getElementById("mySidebar").style.width = "250px"
+    document.getElementById("toggle-navbar-xl").style.display = "none"
+}
+
+document.getElementById("closebtn").onclick = () => {
+    document.getElementById("mySidebar").style.width = "0"
+    if (window.innerWidth >= 885) {
+        document.getElementById("toggle-navbar-xl").style.display = "block"
+    }
+}
+
+document.getElementById("logout").onclick = () => {
+    fetch("/logout", {
+        method: "GET",
+    }).then((window.location.href = "/"))
 }
 
 async function getJobListings() {
     let feed = document.getElementById("job-listings")
+    let search = document.getElementById("search").value
+    let category = document.getElementById("filter-categories").value
+    let location = document.getElementById("filter-locations").value
+    let start_date = document.getElementById("filter-start-date").value
+    let salary = document.getElementById("filter-salary").value
 
     let jobListingPlaceholder = document.getElementById(
         "job-listing-placeholder"
     )
+
+    feed.innerHTML = ""
+
     for (let i = 0; i < 10; i++) {
         feed.appendChild(jobListingPlaceholder.content.cloneNode(true))
     }
 
-    let jobListings = (await axios.get(`http://${SERVER_URL}/get_job_listings`))
-        .data
+    let jobListings = (
+        await axios.get(
+            `http://${SERVER_URL}/get_job_listings?search=${search}&category=${category}&location=${location}&start_date=${start_date}&salary=${salary}`
+        )
+    ).data
 
     feed.innerHTML = ""
 
@@ -170,5 +189,12 @@ function setFilterLocations() {
         locationElement.value = location
         locationElement.innerHTML = location
         filterLocations.appendChild(locationElement)
+    })
+}
+
+function logout() {
+    fetch(`/logout`, {
+        method: "POST",
+        credentials: "include",
     })
 }

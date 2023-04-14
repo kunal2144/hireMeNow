@@ -3,8 +3,13 @@ import hbs from "express-handlebars"
 import Express from "express"
 import dotenv from "dotenv"
 import handlebars from "handlebars"
-import router from "./router.js"
+import generalRouter from "./routers/generalRouter.js"
 import __dirname from "./__dirname.js"
+import path from "path"
+import bodyParser from "body-parser"
+import session from "express-session"
+import cookieParser from "cookie-parser"
+import seekerRouter from "./routers/seekerRouter.js"
 
 handlebars.registerHelper("eq", function (value1, value2) {
     return value1 === value2
@@ -22,8 +27,24 @@ const supabase = createClient(
     process.env.SUPABASE_ANON
 )
 
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
+
+app.use(
+    session({
+        key: "user_sid",
+        secret: "TC;izB48Eu)LU3,",
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            expires: 600000,
+        },
+    })
+)
+
 //routes
-app.use(router)
+app.use(generalRouter)
+app.use(seekerRouter)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -45,28 +66,33 @@ app.engine(
     })
 )
 
-app.get("/get_job_listings", async (req, res) => {
-    let response = {}
+app.get("/job-seeker-details", async (req, res) => {
+    const { data: user, error } = await supabase
+        .from("job_seeker_profile")
+        .select("*")
+        .eq("id", req.session.user.id) //profile id != account id
 
-    if (req.query.search) {
-        response = await supabase
-            .from("job_listing")
-            .select("*")
-            .order("id")
-            .ilike("title", `%${req.query.search}%`)
+    const { data, error2 } = await supabase
+        .from("job_seeker_account")
+        .select("email")
+        .eq("id", req.session.user.id)
 
-        if (response.data.length == 0) {
-            response = await supabase
-                .from("job_listing")
-                .select("*")
-                .order("id")
-                .ilike("description", `%${req.query.search}%`)
-        }
+    if (error || error2) {
+        res.status(500).json({ Error: "Failed to retrieve user details" })
     } else {
-        response = await supabase.from("job_listing").select("*").order("id")
+        let userWithEmail = {
+            ...user,
+            email: data[0].email,
+        }
+        res.json(userWithEmail)
     }
+})
 
-    const { data: job_listing, error } = response
+app.get("/get_job_listings", async (req, res) => {
+    let query = buildQuery(req)
+
+    const { data: job_listing, error } = await query
+    if (error) return res.send(error)
 
     if (job_listing.length == 0)
         return res
@@ -77,8 +103,7 @@ app.get("/get_job_listings", async (req, res) => {
         formatJobData(job)
     })
 
-    if (!error) return res.send(job_listing)
-    else return res.json(error)
+    return res.send(job_listing)
 })
 
 app.get("/job_listing/:id", async (req, res) => {
@@ -105,6 +130,28 @@ app.get("/job_listing/:id", async (req, res) => {
         })
     }
 })
+
+app.get("*", function (req, res) {
+    res.sendFile(path.join(__dirname, "public", "404/404.html"))
+})
+
+function buildQuery(req) {
+    let query = supabase.from("job_listing").select("*").order("id")
+    if (req.query.search) {
+        query = query.ilike("title", `%${req.query.search}%`)
+    }
+    if (req.query.category) {
+        query = query.contains("category", [req.query.category])
+    }
+    if (req.query.location) {
+        query = query.ilike("location", `%${req.query.location}%`)
+    }
+    if (req.query.start_date) {
+        query = query.gte("start_date", req.query.start_date)
+    }
+
+    return query
+}
 
 function formatJobData(job) {
     let sd = new Date(job.start_date)
