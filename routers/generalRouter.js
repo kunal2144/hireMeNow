@@ -123,6 +123,7 @@ router.post("/signup", async (req, res) => {
         const { data, error } = await supabase
             .from("job_seeker_account")
             .insert([{ email: email, password: hashedPassword }])
+            .select()
 
         if (error) {
             if (error.code == 23505)
