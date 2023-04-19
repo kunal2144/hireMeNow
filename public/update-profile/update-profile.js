@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function setValues(userData) {
-    if (userData.first_name)
-        document.getElementsByName("first-name")[0].value = userData.first_name
-    if (userData.middle_name)
+    if (userData["0"].first_name)
+        document.getElementsByName("first-name")[0].value =
+            userData["0"].first_name
+    if (userData["0"].middle_name)
         document.getElementsByName("second-name")[0].value =
-            userData.middle_name
-    if (userData.last_name)
-        document.getElementsByName("last-name")[0].value = userData.last_name
+            userData["0"].middle_name
+    if (userData["0"].last_name)
+        document.getElementsByName("last-name")[0].value =
+            userData["0"].last_name
     document.getElementsByName("email")[0].value = userData.email
 }

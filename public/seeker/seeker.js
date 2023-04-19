@@ -191,10 +191,3 @@ function setFilterLocations() {
         filterLocations.appendChild(locationElement)
     })
 }
-
-function logout() {
-    fetch(`/logout`, {
-        method: "POST",
-        credentials: "include",
-    })
-}
