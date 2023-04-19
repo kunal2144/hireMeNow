@@ -80,8 +80,9 @@ app.get("/job-seeker-details", async (req, res) => {
     if (error || error2) {
         res.status(500).json({ Error: "Failed to retrieve user details" })
     } else {
+        console.log(JSON.stringify(user))
         let userWithEmail = {
-            ...user,
+            ...user[0],
             email: data[0].email,
         }
         res.json(userWithEmail)
