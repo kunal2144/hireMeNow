@@ -10,6 +10,7 @@ import bodyParser from "body-parser"
 import session from "express-session"
 import cookieParser from "cookie-parser"
 import seekerRouter from "./routers/seekerRouter.js"
+import { sessionChecker } from "./middlewares/auth.js"
 
 handlebars.registerHelper("eq", function (value1, value2) {
     return value1 === value2
@@ -70,7 +71,7 @@ app.get("/job-seeker-details", async (req, res) => {
     const { data: user, error } = await supabase
         .from("job_seeker_profile")
         .select("*")
-        .eq("id", req.session.user.id) //profile id != account id
+        .eq("id", req.session.user.id)
 
     const { data, error2 } = await supabase
         .from("job_seeker_account")
@@ -80,7 +81,6 @@ app.get("/job-seeker-details", async (req, res) => {
     if (error || error2) {
         res.status(500).json({ Error: "Failed to retrieve user details" })
     } else {
-        console.log(JSON.stringify(user))
         let userWithEmail = {
             ...user[0],
             email: data[0].email,
@@ -107,7 +107,8 @@ app.get("/get_job_listings", async (req, res) => {
     return res.send(job_listing)
 })
 
-app.get("/job_listing/:id", async (req, res) => {
+app.get("/job_listing/:id", sessionChecker, async (req, res) => {
+    if (req.redirect) return res.redirect("/login")
     const { data: jobListing, error } = await supabase
         .from("job_listing")
         .select("*")
@@ -128,6 +129,27 @@ app.get("/job_listing/:id", async (req, res) => {
         res.render("job_listing", {
             title: job.title.concat(" | Jobs"),
             jobListing: job,
+        })
+    }
+})
+
+app.get("/apply/:id", sessionChecker, async (req, res) => {
+    if (req.redirect) return res.redirect("/login")
+
+    const { data: jobListing, error } = await supabase
+        .from("job_listing")
+        .select("*")
+        .eq("id", req.params.id)
+    if (error) {
+        res.status(500).render("error", {
+            message: "Failed to retrieve job listing",
+        })
+    } else if (jobListing.length === 0) {
+        res.status(404).render("notfound", { title: "404 Error | Jobs" })
+    } else {
+        res.render("apply", {
+            title: "Apply | Jobs",
+            job: jobListing[0],
         })
     }
 })

@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Seeker | HireMeNow</title>
-        <link rel="icon" href="../assets/images/favicon.png" />
-        <link rel="stylesheet" href="seeker.css" />
-        <script src="./seeker.js" type="module"></script>
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Applications | HireMeNow</title>
+        <link rel="stylesheet" href="applications.css" />
     </head>
     <body>
+        <body>
         <template id="job-listing-placeholder">
             <div
                 class="ph-item job-listing"
@@ -59,7 +53,7 @@
                 >&times;</a
             >
             <a href="/seeker">Job&nbsp;Listings</a>
-            <a href="/applications">My&nbsp;Applications</a>
+            <a href="#">My&nbsp;Applications</a>
             <a href="/update-profile">Update&nbsp;Profile</a>
             <a id="logout" href="#">Logout</a>
         </div>
@@ -92,56 +86,9 @@
             </nav>
         </header>
         <div class="hero">
-            <div class="static-filter">
-                <div id="centered-filter">
-                    <div id="filter">
-                        <h2 style="text-align: center">
-                            <img
-                                src="../assets/images/filter.png"
-                                alt="filter.png"
-                            />Filters
-                        </h2>
-                        <label for="filter-categories">Category</label>
-                        <select name="Category" id="filter-categories">
-                            <option value="" disabled selected>
-                                Select your option
-                            </option>
-                        </select>
-                        <label for="filter-locations">Location</label>
-                        <select name="Location" id="filter-locations">
-                            <option value="" disabled selected>
-                                Select your option
-                            </option>
-                        </select>
-                        <label for="filter-salary"
-                            >Desired Minimum Montly Salary</label
-                        >
-                        <div id="salary-container">
-                            <input
-                                type="range"
-                                min="0"
-                                max="500000"
-                                step="10000"
-                                value="0"
-                                id="filter-salary"
-                                style="display: inline"
-                            />
-                            <p id="salary" style="display: inline">0</p>
-                        </div>
-                        <label for="filter-start-date"
-                            >Starting from (or after)</label
-                        >
-                        <input
-                            type="date"
-                            name="filter-start-date"
-                            id="filter-start-date"
-                        />
-                    </div>
-                </div>
-            </div>
             <div id="content">
                 <div id="feed">
-                    <div id="job-listings"></div>
+                    <div id="job-applications"></div>
                 </div>
             </div>
         </div>
@@ -153,6 +100,6 @@
                 Recruit
             </button>
         </footer>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="applications.js" type="module" defer></script>
     </body>
 </html>

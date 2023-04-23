@@ -6,10 +6,34 @@
         <link rel="stylesheet" href="../css/views/job_listing.css" />
     </head>
     <body>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" id="closebtn" class="closebtn"
+                >&times;</a
+            >
+            <a href="/applications">My&nbsp;Applications</a>
+            <a href="/update-profile">Update&nbsp;Profile</a>
+            <a id="logout" href="#">Logout</a>
+        </div>
         <header>
+            <img
+                id="toggle-navbar-xl"
+                src="../assets/images/menu.png"
+                alt="toggle navbar"
+            />
             <nav>
-                <h1><a href="/">HireMeNow</a></h1>
-                <input type="text" placeholder="Search for job listings" />
+                <div>
+                    <h1><a href="/">HireMeNow</a></h1>
+                    <img
+                        id="toggle-navbar"
+                        src="../assets/images/menu.png"
+                        alt="toggle navbar"
+                    />
+                </div>
+                <input
+                    id="search"
+                    type="text"
+                    placeholder="Search for job listings"
+                />
                 <button
                     class="switch"
                     onclick="window.location.href = '/recruiter'"
@@ -67,7 +91,7 @@
                             ";"
                             "<br/>"
                         }}}</p>
-                    <button class="apply-now">Apply Now</button>
+                    <button class="apply-now" onclick="window.location.href = '/apply/{{jobListing.id}}'">Apply Now</button>
                 </div>
             </div>
         </div>
@@ -79,5 +103,6 @@
                 Recruit
             </button>
         </footer>
+        <script src="../scripts/views/job_listing.js"></script>
     </body>
 </html>

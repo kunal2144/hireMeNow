@@ -120,7 +120,7 @@ router.post("/signup", async (req, res) => {
     const hashedPassword = await hashPass(password)
 
     if (type == "seeker") {
-        const { data, error } = await supabase
+        let { data, error } = await supabase
             .from("job_seeker_account")
             .insert([{ email: email, password: hashedPassword }])
             .select()
@@ -135,6 +135,20 @@ router.post("/signup", async (req, res) => {
                 type: type,
                 id: data[0].id,
             }
+            ;({ data, error } = await supabase
+                .from("resume")
+                .insert([{}])
+                .select("id"))
+            ;({ data, error } = await supabase
+                .from("job_seeker_profile")
+                .insert([
+                    {
+                        id: req.session.user.id,
+                        status: "Active",
+                        resume_id: data[0].id,
+                    },
+                ]))
+
             res.redirect("/seeker")
         }
     } else {
@@ -164,6 +178,50 @@ router.get("/logout", (req, res) => {
     } else {
         res.redirect("/login")
     }
+})
+
+router.get("/text-resume", sessionChecker, async (req, res) => {
+    if (req.redirect) return res.redirect("/login")
+
+    let { data, error } = await supabase.storage
+        .from("text-resumes")
+        .list(`${req.session.user.id}`)
+
+    if (error) {
+        return res.status(500).json({ Error: "Something went wrong" })
+    }
+
+    if (data.length == 0) {
+        return res.status(404).json({ Error: "No resume found" })
+    }
+
+    const file = await supabase.storage
+        .from("text-resumes")
+        .getPublicUrl(`${req.session.user.id}/${data[0].name}`)
+
+    res.send(file.data.publicUrl)
+})
+
+router.get("/video-resume", sessionChecker, async (req, res) => {
+    if (req.redirect) return res.redirect("/login")
+
+    let { data, error } = await supabase.storage
+        .from("video-resumes")
+        .list(`${req.session.user.id}`)
+
+    if (error) {
+        return res.status(500).json({ Error: "Something went wrong" })
+    }
+
+    if (data.length == 0) {
+        return res.status(404).json({ Error: "No resume found" })
+    }
+
+    const file = await supabase.storage
+        .from("video-resumes")
+        .getPublicUrl(`${req.session.user.id}/${data[0].name}`)
+
+    res.send(file.data.publicUrl)
 })
 
 async function hashPass(password) {

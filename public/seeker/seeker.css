@@ -113,6 +113,7 @@ footer {
 #job-listings {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    cursor: pointer;
 }
 
 #centered-filter {

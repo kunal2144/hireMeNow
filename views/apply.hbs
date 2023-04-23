@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../assets/images/favicon.png" />
+    </head>
+    <link rel="stylesheet" href="../css/views/apply.css">
+    <body>
+        <header>
+            <nav>
+                <h1><a href="/">HireMeNow</a></h1>
+                <input type="text" placeholder="Search for job listings" />
+                <button
+                    class="switch"
+                    onclick="window.location.href = '/recruiter'"
+                >
+                    Switch to Recruiting
+                </button>
+            </nav>
+        </header>
+        <div id="content">
+            <div id="feed">
+                <h1>Cover Letter for {{job.title}} at {{job.company}}</h1>
+                <div id="desc">
+                    <form onsubmit="handleApply(event)">
+                        <textarea
+                            name="cover_letter"
+                            placeholder="Write your cover letter here..."
+                            maxlength="2000"
+                        ></textarea>
+                        <div id="the-count">
+                            <span id="current">0</span>
+                            <span id="maximum">/ 2000</span>
+                        </div>
+                        <button id="apply" class="apply-now" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <button
+                class="switch"
+                onclick="window.location.href = '/recruiter'"
+            >
+                Recruit
+            </button>
+        </footer>
+        <script src="../scripts/views/apply.js"></script>
+    </body>
+</html>
