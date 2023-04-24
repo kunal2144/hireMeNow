@@ -19,6 +19,12 @@ document.getElementById("closebtn").onclick = () => {
     }
 }
 
+document.getElementById("logout").onclick = () => {
+    fetch("/logout", {
+        method: "GET",
+    }).then((window.location.href = "/"))
+}
+
 function getApplications() {
     fetch("/get-applications", {
         method: "GET",
@@ -28,7 +34,6 @@ function getApplications() {
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res)
             setApplications(res)
         })
 }
@@ -53,9 +58,7 @@ function jobToHTML(job) {
     jobApplication.innerHTML = `
             <h1>${job.title}</h1>
             <h3>${job.description}</h3>
-            <h3><img src="../../assets/images/location.png"/>${
-                job.location
-            }</h3>
+            <h3><img src="../../assets/images/location.png"/>${job.location}</h3>
             <hr>
             <div id="details">
                 <div class="row">
@@ -75,9 +78,9 @@ function jobToHTML(job) {
                     </div>
                 </div>
             </div>
-            <h4 style=" color: ${job.status == "Open" ? "green" : "red"};">
-                ${job.status}
-            </h4>
         `
+    //         <h4 style=" color: ${job.status == "Open" ? "green" : "red"};">
+    //     ${job.status}
+    // </h4>
     return jobApplication
 }

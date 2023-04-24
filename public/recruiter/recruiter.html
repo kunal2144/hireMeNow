@@ -6,11 +6,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Recruiter | HireMeNow</title>
         <link rel="stylesheet" href="recruiter.css" />
+        <script src="recruiter.js" type="module"></script>
     </head>
     <body>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" id="closebtn" class="closebtn"
+                >&times;</a
+            >
+            <a href="/recruiter">Job&nbsp;Seekers</a>
+            <a href="/listings">My&nbsp;Listings</a>
+            <a href="/recruits">My&nbsp;Recruits</a>
+            <a href="/update-profile">Update&nbsp;Profile</a>
+            <a id="logout" href="#">Logout</a>
+        </div>
         <header>
+            <img
+                id="toggle-navbar-xl"
+                src="../assets/images/menu.png"
+                alt="toggle navbar"
+            />
             <nav>
-                <h1><a href="/">HireMeNow</a></h1>
+                <div>
+                    <h1><a href="/">HireMeNow</a></h1>
+                    <img
+                        id="toggle-navbar"
+                        src="../assets/images/menu.png"
+                        alt="toggle navbar"
+                    />
+                </div>
                 <input type="text" placeholder="Search for job seekers" />
                 <button
                     class="switch"

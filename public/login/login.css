@@ -1,5 +1,22 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #e4ffe9 !important;
+}
+.brand_logo_container {
+    background-color: #e4ffe9;
+    border: 1px solid green;
+}
+.brand_logo_container img {
+    margin-top: 10px;
+    margin-right: 5px;
+    width: 200px;
+    height: 200px;
+}
 .user_card {
-    height: 400px;
+    height: 450px;
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;

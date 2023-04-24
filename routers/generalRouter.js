@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js"
 import express from "express"
 import path from "path"
 import __dirname from "../__dirname.js"
-import { sessionChecker } from "../middlewares/auth.js"
+import { sessionChecker, seekerChecker } from "../middlewares/auth.js"
 import dotenv from "dotenv"
 import bcrypt from "bcrypt"
 
@@ -71,7 +71,7 @@ router.post("/login", async (req, res) => {
                 type: "recruiter",
                 id: data[0].id,
             }
-            res.redirect("/recruiter")
+            res.status(200).json({ type: "recruiter" })
         }
     } else {
         const validPassword = await bcrypt.compare(password, data[0].password)
@@ -87,19 +87,19 @@ router.post("/login", async (req, res) => {
             type: "seeker",
             id: data[0].id,
         }
-        res.redirect("/seeker")
+        res.status(200).json({ type: "seeker" })
     }
 })
 
 router.get("/seeker", sessionChecker, (req, res) => {
     if (req.redirect) return res.redirect("/login")
-    if (req.session.user.type == "recruiter") return res.redirect("/recruiter")
+    if (req.session.user.type == "recruiter") return res.redirect("/logout")
     res.sendFile(path.join(__dirname, "public", "seeker/seeker.html"))
 })
 
 router.get("/recruiter", sessionChecker, (req, res) => {
     if (req.redirect) return res.redirect("/login")
-    if (req.session.user.type == "seeker") return res.redirect("/seeker")
+    if (req.session.user.type == "seeker") return res.redirect("/logout")
     res.sendFile(path.join(__dirname, "public", "recruiter/recruiter.html"))
 })
 
@@ -174,13 +174,11 @@ router.post("/signup", async (req, res) => {
 router.get("/logout", (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
         res.clearCookie("user_sid")
-        res.redirect("/")
-    } else {
-        res.redirect("/login")
     }
+    res.redirect("/login")
 })
 
-router.get("/text-resume", sessionChecker, async (req, res) => {
+router.get("/text-resume", sessionChecker, seekerChecker, async (req, res) => {
     if (req.redirect) return res.redirect("/login")
 
     let { data, error } = await supabase.storage
@@ -202,7 +200,7 @@ router.get("/text-resume", sessionChecker, async (req, res) => {
     res.send(file.data.publicUrl)
 })
 
-router.get("/video-resume", sessionChecker, async (req, res) => {
+router.get("/video-resume", sessionChecker, seekerChecker, async (req, res) => {
     if (req.redirect) return res.redirect("/login")
 
     let { data, error } = await supabase.storage

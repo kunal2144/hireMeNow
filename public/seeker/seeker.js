@@ -104,9 +104,7 @@ function jobToHTML(job) {
     jobListing.innerHTML = `
             <h1>${job.title}</h1>
             <h3>${job.description}</h3>
-            <h3><img src="../../assets/images/location.png"/>${
-                job.location
-            }</h3>
+            <h3><img src="../../assets/images/location.png"/>${job.location}</h3>
             <hr>
             <div id="details">
                 <div class="row">
@@ -133,10 +131,10 @@ function jobToHTML(job) {
                     </div>
                 </div>
             </div>
-            <h4 style=" color: ${job.status == "Open" ? "green" : "red"};">
-                ${job.status}
-            </h4>
         `
+    //         <h4 style=" color: ${job.status == "Open" ? "green" : "red"};">
+    //     ${job.status}
+    // </h4>
     return jobListing
 }
 

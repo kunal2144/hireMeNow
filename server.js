@@ -10,7 +10,8 @@ import bodyParser from "body-parser"
 import session from "express-session"
 import cookieParser from "cookie-parser"
 import seekerRouter from "./routers/seekerRouter.js"
-import { sessionChecker } from "./middlewares/auth.js"
+import recruiterRoutes from "./routers/recruiterRouter.js"
+import { sessionChecker, seekerChecker } from "./middlewares/auth.js"
 
 handlebars.registerHelper("eq", function (value1, value2) {
     return value1 === value2
@@ -46,6 +47,7 @@ app.use(
 //routes
 app.use(generalRouter)
 app.use(seekerRouter)
+app.use(recruiterRoutes)
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
@@ -107,7 +109,7 @@ app.get("/get_job_listings", async (req, res) => {
     return res.send(job_listing)
 })
 
-app.get("/job_listing/:id", sessionChecker, async (req, res) => {
+app.get("/job_listing/:id", sessionChecker, seekerChecker, async (req, res) => {
     if (req.redirect) return res.redirect("/login")
     const { data: jobListing, error } = await supabase
         .from("job_listing")
@@ -133,7 +135,7 @@ app.get("/job_listing/:id", sessionChecker, async (req, res) => {
     }
 })
 
-app.get("/apply/:id", sessionChecker, async (req, res) => {
+app.get("/apply/:id", sessionChecker, seekerChecker, async (req, res) => {
     if (req.redirect) return res.redirect("/login")
 
     const { data: jobListing, error } = await supabase

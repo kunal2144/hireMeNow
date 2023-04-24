@@ -16,9 +16,14 @@ function liveValidate() {
     }
 }
 
-function guestCredentials() {
-    email.value = "jkunal2144@gmail.com"
-    password.value = "Test@123"
+function guestCredentials(type) {
+    if (type.toLowerCase() == "seeker") {
+        email.value = "jkunal2144@gmail.com"
+        password.value = "Test@123"
+    } else {
+        email.value = "jkunal2145@gmail.com"
+        password.value = "Test@123"
+    }
 }
 
 function handleSubmission(e) {
@@ -68,7 +73,13 @@ function loginUser() {
             password.value = ""
             alert("Invalid Password")
         } else {
-            window.location.href = "/seeker"
+            res.json().then((data) => {
+                if (data.type == "seeker") {
+                    window.location.href = "/seeker"
+                } else {
+                    window.location.href = "/recruiter"
+                }
+            })
         }
     })
 }

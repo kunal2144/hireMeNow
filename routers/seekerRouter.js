@@ -1,7 +1,7 @@
 import express from "express"
 import path from "path"
 import __dirname from "../__dirname.js"
-import { sessionChecker } from "../middlewares/auth.js"
+import { sessionChecker, seekerChecker } from "../middlewares/auth.js"
 import { createClient } from "@supabase/supabase-js"
 import fileUpload from "express-fileupload"
 import bcrypt from "bcrypt"
@@ -18,7 +18,7 @@ router.use(express.urlencoded({ extended: true }))
 router.use(express.static(path.join(__dirname, "public")))
 
 router
-    .get("/update-profile", sessionChecker, (req, res) => {
+    .get("/update-profile", sessionChecker, seekerChecker, (req, res) => {
         if (req.redirect) return res.redirect("/login")
         res.sendFile(
             path.join(__dirname, "public", "update-profile/update-profile.html")
@@ -150,6 +150,15 @@ router
                             contentType: `${user.video_resume.mimetype}`,
                         }
                     ))
+
+                if (!error) {
+                    user.video_resume_url = data.path
+                } else {
+                    console.log(error)
+                    return res
+                        .status(500)
+                        .json({ Error: "Failed to save user details" })
+                }
             }
 
             let { data, error } = await supabase
@@ -188,7 +197,6 @@ router
         }
     )
 
-//here
 router.post("/apply/:id", async (req, res) => {
     let { data, error } = await supabase
         .from("job_seeker_profile")
@@ -218,7 +226,7 @@ router.post("/apply/:id", async (req, res) => {
     return res.status(200).json({ Success: "Applied Successfully" })
 })
 
-router.get("/applications", sessionChecker, (req, res) => {
+router.get("/applications", sessionChecker, seekerChecker, (req, res) => {
     if (req.redirect) return res.redirect("/login")
     res.sendFile(
         path.join(__dirname, "public", "applications/applications.html")
