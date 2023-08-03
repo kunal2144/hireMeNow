@@ -2,7 +2,7 @@
 const form = document.getElementById('login-form');
 
 // Add event listener to form submit
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
   event.preventDefault(); // prevent form from submitting
 
   // Check if username and password are valid
